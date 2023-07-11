@@ -1,0 +1,149 @@
+ <html>
+     {% load static %}
+     <head>
+         <title>Products</title>
+         <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+     </head>
+     <body>
+         <div class="w3-content" style="max-width:1600px">
+
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-20">
+
+    <h1 class="w3-xxxlarge" style="color:white;font-family: 'Poppins', sans-serif;"><b>HONEST FURNITURE</b></h1>
+    <span class="w3-tag">The Furniture Store</span><br><br>
+    <a href="{% url 'home' %}"><input type="button" value="HOME" style="width:140px;background:transparent;height:40px;border:1px solid white;color:white;"></a>
+  </header>
+  </div>
+
+<div class="container">
+    {% for data in view %}
+                       {% csrf_token %}
+  <div class="card">
+    <div class="card__body">
+      <span class="tag tag-blue">HONEST FURNITURE</span>
+      <h2>Purchase Details</h2>
+
+                                                  <p><span>Purchase Id:</span>{{data.id}}</p>
+                                                  <p><span>Product Name:</span>{{data.pname}}</p>
+                                                  <p><span>Product Cat:</span>{{data.pcat}}</p>
+                                                  <p><span>Product Quality:</span>{{data.pquality}}</p>
+                                                  <p><span>Product Dec:</span>{{data.pdec}}</p>
+                                                  <p><span>Product Cost:</span>{{data.pcost}}</p>
+                                                  <p><span>Customer Id:</span>{{data.cid_id}}</p>
+                                                  <p><span>Product Id:</span>{{data.pid_id}}</p>
+
+
+
+    </div>
+
+  </div>
+
+                {% endfor %}
+
+</div>
+
+        </body>
+        </html>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background-color:teal;
+  font-family: 'Poppins', sans-serif;
+
+
+font-size:1rem;
+
+}
+p{
+    color:gray;
+    font-weight:bold;
+}
+span{
+    font-weight:bold;
+    color:black;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin-block: 2rem;
+  gap: 2rem;
+}
+
+
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(17rem, calc(17rem + 2vw), 20rem);
+  overflow: hidden;
+  border-radius:20px;
+
+height:400px;
+background-color:white;
+
+}
+
+
+
+.card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+
+.tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+
+.tag + .tag {
+  margin-left: .5em;
+}
+
+.tag-blue {
+  background: #56CCF2;
+background-color: teal;
+}
+
+
+
+
+.card__body h4 {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+
+
+.user__info > small {
+  color: #666;
+}
+</style>

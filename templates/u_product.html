@@ -1,0 +1,157 @@
+ <html>
+     {% load static %}
+     <head>
+         <title>Products</title>
+         <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     </head>
+     <body style="background-color: teal">
+         <div class="w3-content" style="max-width:1600px">
+<header>
+    <center><h1 style="color:white">HONEST FURNITURE</h1>
+    <h4 style="color:white">The Furniture  Store</h4>
+        <a href="{% url 'home' %}"><input type="button" value="HOME" style="background: transparent;border:1px solid white;width:150px;height:40px;"></a></center>
+</header>
+  <!-- Header -->
+
+  </div>
+
+<div class="container">
+    {% for data in products %}
+                     <form method="post" action="{%  url 'buyproduct' data.id %}">
+                       {% csrf_token %}
+  <div class="card">
+    <div class="card__header">
+      <img src="{{data.pimage.url}}" alt="card__image" class="card__image" width="600">
+    </div>
+    <div class="card__body">
+      <span class="tag tag-blue">HONEST FURNITURE</span>
+      <h4>Product Details</h4>
+
+                                                  <p><span>Product ID:</span>{{data.id}}</p>
+                                                  <p><span>Product NAME:</span>{{data.pname}}</p>
+                                                  <p><span>Product CAT:</span>{{data.pcat}}</p>
+                                                  <p><span>Product QUALITY:</span>{{data.pquality}}</p>
+                                                  <p><span>Product DEC:</span>{{data.pdec}}</p>
+                                                  <p><span>Product COST:</span>{{data.pcost}}</p>
+
+                                                   <input type="submit" value="buynow" style="width:150px;height:40px;color:white;border:none;background-color: teal;">
+
+    </div>
+
+  </div>
+   </form>
+                {% endfor %}
+
+</div>
+ {% if messages %}
+        <ul class="messages">
+            {%  for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"
+                {% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+
+        </ul>
+        {% endif %}
+        </body>
+        </html>
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans";
+  display: grid;
+  place-items: center;
+  height: 100vh;
+
+font-size:0.9rem;
+
+}
+span{
+    font-weight:bold;
+}
+h1,h2,h3,h4,h5,h6 {font-family: "Oswald"}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin-block: 2rem;
+  gap: 2rem;
+}
+
+img {
+  max-width: 100%;
+  height:180px;
+  display: block;
+  object-fit: cover;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(18rem, calc(18rem + 2vw), 20rem);
+  overflow: hidden;
+  border-radius: 1rem;
+  background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+height:490px;
+border:1px solid teal;
+
+}
+
+
+
+.card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+
+.tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+
+.tag + .tag {
+  margin-left: .5em;
+}
+
+.tag-blue {
+  background: #56CCF2;
+background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+  color: #fafafa;
+}
+
+
+
+.card__body h4 {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+
+
+.user__info > small {
+  color: #666;
+}
+</style>
